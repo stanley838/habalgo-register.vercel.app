@@ -1,130 +1,129 @@
-‎<!DOCTYPE html>
-‎<html lang="en">
-‎<head>
-‎<meta charset="utf-8">
-‎<meta name="viewport" content="width=device-width, initial-scale=1">
-‎<title>HabalGo – Rider Login</title>
-‎<meta name="description" content="HabalGo is a web-based sign-in platform for Habal-habal riders.">
-‎<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
-‎<link rel="stylesheet" href="style.css">
-‎</head>
-‎<body>
-‎<div class="bg" aria-hidden="true"></div>
-‎<div class="toasts" id="toasts" aria-live="polite"></div>
-‎
-‎<header class="nav">
-‎  <a class="brand" href="#home"><span class="logo">H</span>Habal<b>Go</b></a>
-‎  <div class="nav-actions">
-‎    <button class="icon-btn" id="themeBtn" aria-label="Toggle light or dark mode">◐</button>
-‎    <a class="btn btn-sm" id="navLogin" href="#login">Rider Login</a>
-‎    <a class="btn btn-sm" id="navDash" href="#dashboard" hidden>Dashboard</a>
-‎  </div>
-‎</header>
-‎
-‎<main>
-‎  <!-- ============ LANDING ============ -->
-‎  <section class="view active" id="view-home">
-‎    <div class="hero">
-‎      <div class="hero-text">
-‎        <span class="chip">Capstone Project</span>
-‎        <h1>Ride-ready in seconds.<br><span class="grad">Sign in to HabalGo.</span></h1>
-‎        <p>A fast, secure sign-in platform built for Habal-habal riders. Log in with your email and password to open your rider profile.</p>
-‎        <div class="cta">
-‎          <a class="btn" href="#login">Rider Login</a>
-‎          <a class="btn ghost" href="#features">See features</a>
-‎        </div>
-‎      </div>
-‎      <div class="rider-card card" aria-hidden="true">
-‎        <div class="rc-top"><span class="logo">H</span><span class="badge ok">✓ Verified Rider</span></div>
-‎        <div class="rc-name">Juan Dela Cruz</div>
-‎        <div class="rc-meta">HG-100001 · Habal-habal Rider</div>
-‎        <div class="rc-bar"><i></i></div>
-‎        <div class="rc-foot">Ready to ride</div>
-‎      </div>
-‎    </div>
-‎
-‎    <h2 class="section-title reveal" id="features">Amazing sign-in features</h2>
-‎    <div class="grid">
-‎      <article class="card reveal"><div class="ico">🔒</div><h3>Hashed passwords</h3><p>Passwords are checked as SHA-256 hashes, never stored as plain text.</p></article>
-‎      <article class="card reveal"><div class="ico">🛡️</div><h3>Smart lockout</h3><p>5 wrong attempts lock sign-in for 30 seconds with a live countdown.</p></article>
-‎      <article class="card reveal"><div class="ico">🔁</div><h3>Remember me</h3><p>Stay signed in on your device, or sign in for this session only.</p></article>
-‎      <article class="card reveal"><div class="ico">⏱️</div><h3>Auto logout</h3><p>Idle for 15 minutes and you are signed out to protect your account.</p></article>
-‎      <article class="card reveal"><div class="ico">⚡</div><h3>Live validation</h3><p>Instant feedback on your email and password as you type.</p></article>
-‎      <article class="card reveal"><div class="ico">🔠</div><h3>Caps Lock alert</h3><p>Get warned when Caps Lock is on while typing your password.</p></article>
-‎      <article class="card reveal"><div class="ico">✅</div><h3>Verified badge</h3><p>See your rider ID and verified status right on your dashboard.</p></article>
-‎      <article class="card reveal"><div class="ico">🌗</div><h3>Light and dark mode</h3><p>Mobile-first design that remembers your theme choice.</p></article>
-‎    </div>
-‎
-‎    <h2 class="section-title reveal">How it works</h2>
-‎    <div class="grid">
-‎      <div class="card reveal"><span class="num">1</span><h3>Log in</h3><p>Enter your rider email and password.</p></div>
-‎      <div class="card reveal"><span class="num">2</span><h3>View your profile</h3><p>Open your rider ID and verified status.</p></div>
-‎      <div class="card reveal"><span class="num">3</span><h3>Start riding</h3><p>You are signed in and ready for the road.</p></div>
-‎    </div>
-‎  </section>
-‎
-‎  <!-- ============ LOGIN ============ -->
-‎  <section class="view" id="view-login">
-‎    <div class="auth card">
-‎      <h2>Welcome back, rider</h2>
-‎      <p class="sub">Log in with your email and password.</p>
-‎      <div class="msg" id="msg" role="alert"></div>
-‎
-‎      <form id="loginForm" novalidate>
-‎        <div class="field">
-‎          <label for="email">Email</label>
-‎          <input id="email" type="email" autocomplete="email" placeholder="you@example.com">
-‎          <div class="hint" data-for="email"></div>
-‎        </div>
-‎        <div class="field">
-‎          <label for="password">Password</label>
-‎          <div class="inp">
-‎            <input id="password" type="password" autocomplete="current-password" placeholder="Your password">
-‎            <button type="button" class="eye" id="eye">Show</button>
-‎          </div>
-‎          <div class="hint" id="capsHint" style="display:none"></div>
-‎          <div class="hint" data-for="password"></div>
-‎        </div>
-‎        <label class="check"><input type="checkbox" id="remember" checked> Remember me</label>
-‎        <button class="btn block" type="submit" id="loginBtn">Log in</button>
-‎      </form>
-‎
-‎      <div class="demo">
-‎        <p class="demo-title">Demo accounts (tap to fill)</p>
-‎        <button type="button" class="demo-item" data-email="juan@habalgo.com" data-pass="Habal2026">juan@habalgo.com · Habal2026</button>
-‎        <button type="button" class="demo-item" data-email="maria@habalgo.com" data-pass="Rider2026">maria@habalgo.com · Rider2026</button>
-‎        <button type="button" class="demo-item" data-email="pedro@habalgo.com" data-pass="GoRide2026">pedro@habalgo.com · GoRide2026</button>
-‎      </div>
-‎    </div>
-‎  </section>
-‎
-‎  <!-- ============ DASHBOARD ============ -->
-‎  <section class="view" id="view-dash">
-‎    <div class="dash">
-‎      <div class="dash-head">
-‎        <div>
-‎          <p class="sub" id="dGreet">Hello</p>
-‎          <h1 id="dName">Rider</h1>
-‎        </div>
-‎        <span class="badge" id="dBadge">Pending</span>
-‎      </div>
-‎      <div class="grid two">
-‎        <div class="card"><h3>Rider ID</h3><p class="big" id="dId">—</p></div>
-‎        <div class="card"><h3>Email</h3><p class="big small" id="dEmail">—</p></div>
-‎      </div>
-‎      <div class="card">
-‎        <h3>Ride status</h3>
-‎        <p class="sub" id="dStatus"></p>
-‎        <div class="rc-bar"><i></i></div>
-‎        <div class="actions"><button class="btn ghost" id="logoutBtn" type="button">Log out</button></div>
-‎      </div>
-‎    </div>
-‎  </section>
-‎</main>
-‎
-‎<footer class="footer">© <span id="year"></span> HabalGo · Capstone Project</footer>
-‎
-‎<script src="script.js"></script>
-‎</body>
-‎</html>
-‎
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HabalGo – Rider Login</title>
+<meta name="description" content="HabalGo is a web-based sign-in platform for Habal-habal riders.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="bg" aria-hidden="true"></div>
+<div class="toasts" id="toasts" aria-live="polite"></div>
+
+<header class="nav">
+  <a class="brand" href="#home"><span class="logo">H</span>Habal<b>Go</b></a>
+  <div class="nav-actions">
+    <button class="icon-btn" id="themeBtn" aria-label="Toggle light or dark mode">◐</button>
+    <a class="btn btn-sm" id="navLogin" href="#login">Rider Login</a>
+    <a class="btn btn-sm" id="navDash" href="#dashboard" hidden>Dashboard</a>
+  </div>
+</header>
+
+<main>
+  <!-- ============ LANDING ============ -->
+  <section class="view active" id="view-home">
+    <div class="hero">
+      <div class="hero-text">
+        <span class="chip">Capstone Project</span>
+        <h1>Ride-ready in seconds.<br><span class="grad">Sign in to HabalGo.</span></h1>
+        <p>A fast, secure sign-in platform built for Habal-habal riders. Log in with your email and password to open your rider profile.</p>
+        <div class="cta">
+          <a class="btn" href="#login">Rider Login</a>
+          <a class="btn ghost" href="#features">See features</a>
+        </div>
+      </div>
+      <div class="rider-card card" aria-hidden="true">
+        <div class="rc-top"><span class="logo">H</span><span class="badge ok">✓ Verified Rider</span></div>
+        <div class="rc-name">Juan Dela Cruz</div>
+        <div class="rc-meta">HG-100001 · Habal-habal Rider</div>
+        <div class="rc-bar"><i></i></div>
+        <div class="rc-foot">Ready to ride</div>
+      </div>
+    </div>
+
+    <h2 class="section-title reveal" id="features">Amazing sign-in features</h2>
+    <div class="grid">
+      <article class="card reveal"><div class="ico">🔒</div><h3>Hashed passwords</h3><p>Passwords are checked as SHA-256 hashes, never stored as plain text.</p></article>
+      <article class="card reveal"><div class="ico">🛡️</div><h3>Smart lockout</h3><p>5 wrong attempts lock sign-in for 30 seconds with a live countdown.</p></article>
+      <article class="card reveal"><div class="ico">🔁</div><h3>Remember me</h3><p>Stay signed in on your device, or sign in for this session only.</p></article>
+      <article class="card reveal"><div class="ico">⏱️</div><h3>Auto logout</h3><p>Idle for 15 minutes and you are signed out to protect your account.</p></article>
+      <article class="card reveal"><div class="ico">⚡</div><h3>Live validation</h3><p>Instant feedback on your email and password as you type.</p></article>
+      <article class="card reveal"><div class="ico">🔠</div><h3>Caps Lock alert</h3><p>Get warned when Caps Lock is on while typing your password.</p></article>
+      <article class="card reveal"><div class="ico">✅</div><h3>Verified badge</h3><p>See your rider ID and verified status right on your dashboard.</p></article>
+      <article class="card reveal"><div class="ico">🌗</div><h3>Light and dark mode</h3><p>Mobile-first design that remembers your theme choice.</p></article>
+    </div>
+
+    <h2 class="section-title reveal">How it works</h2>
+    <div class="grid">
+      <div class="card reveal"><span class="num">1</span><h3>Log in</h3><p>Enter your rider email and password.</p></div>
+      <div class="card reveal"><span class="num">2</span><h3>View your profile</h3><p>Open your rider ID and verified status.</p></div>
+      <div class="card reveal"><span class="num">3</span><h3>Start riding</h3><p>You are signed in and ready for the road.</p></div>
+    </div>
+  </section>
+
+  <!-- ============ LOGIN ============ -->
+  <section class="view" id="view-login">
+    <div class="auth card">
+      <h2>Welcome back, rider</h2>
+      <p class="sub">Log in with your email and password.</p>
+      <div class="msg" id="msg" role="alert"></div>
+
+      <form id="loginForm" novalidate>
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" type="email" autocomplete="email" placeholder="you@example.com">
+          <div class="hint" data-for="email"></div>
+        </div>
+        <div class="field">
+          <label for="password">Password</label>
+          <div class="inp">
+            <input id="password" type="password" autocomplete="current-password" placeholder="Your password">
+            <button type="button" class="eye" id="eye">Show</button>
+          </div>
+          <div class="hint" id="capsHint" style="display:none"></div>
+          <div class="hint" data-for="password"></div>
+        </div>
+        <label class="check"><input type="checkbox" id="remember" checked> Remember me</label>
+        <button class="btn block" type="submit" id="loginBtn">Log in</button>
+      </form>
+
+      <div class="demo">
+        <p class="demo-title">Demo accounts (tap to fill)</p>
+        <button type="button" class="demo-item" data-email="juan@habalgo.com" data-pass="Habal2026">juan@habalgo.com · Habal2026</button>
+        <button type="button" class="demo-item" data-email="maria@habalgo.com" data-pass="Rider2026">maria@habalgo.com · Rider2026</button>
+        <button type="button" class="demo-item" data-email="pedro@habalgo.com" data-pass="GoRide2026">pedro@habalgo.com · GoRide2026</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ DASHBOARD ============ -->
+  <section class="view" id="view-dash">
+    <div class="dash">
+      <div class="dash-head">
+        <div>
+          <p class="sub" id="dGreet">Hello</p>
+          <h1 id="dName">Rider</h1>
+        </div>
+        <span class="badge" id="dBadge">Pending</span>
+      </div>
+      <div class="grid two">
+        <div class="card"><h3>Rider ID</h3><p class="big" id="dId">—</p></div>
+        <div class="card"><h3>Email</h3><p class="big small" id="dEmail">—</p></div>
+      </div>
+      <div class="card">
+        <h3>Ride status</h3>
+        <p class="sub" id="dStatus"></p>
+        <div class="rc-bar"><i></i></div>
+        <div class="actions"><button class="btn ghost" id="logoutBtn" type="button">Log out</button></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">© <span id="year"></span> HabalGo · Capstone Project</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
